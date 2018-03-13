@@ -3,3 +3,36 @@
 3、appender主要作用就是：①控制打印日志的地方、②打印日志的输出格式。
 4、根logger：只有一个level属性，应为已经被命名为"root".
 5、spring、mybatis等，如果不显示的定义logger，则自动向上递归匹配至根logger.
+
+
+一、应用实例
+1、只配置root
+
+2、带有loger的配置，不指定级别，不指定appender
+
+
+    <configuration>   
+       
+      <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">   
+        <!-- encoder 默认配置为PatternLayoutEncoder -->   
+        <encoder>   
+          <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>   
+        </encoder>   
+      </appender>   
+       
+      <!-- logback为java中的包 -->   
+      <logger name="logback"/>   
+       
+      <root level="DEBUG">             
+        <appender-ref ref="STDOUT" />   
+      </root>     
+         
+     </configuration>  
+     
+<logger name="logback" />将控制logback包下的所有类的日志的打印，但是并没用设置打印级别，所以继承他的上级<root>的日志级别“DEBUG”；
+没有设置addtivity，默认为true，将此loger的打印信息向上级传递；
+没有设置appender，此loger本身不打印任何信息。
+<root level="DEBUG">将root的打印级别设置为“DEBUG”，指定了名字为“STDOUT”的appender。
+
+当执行logback.LogbackDemo类的main方法时，因为LogbackDemo 在包logback中，所以首先执行<logger name="logback" />，将级别为“DEBUG”及大于“DEBUG”的日志信息传递给root，本身并不打印；
+root接到下级传递的信息，交给已经配置好的名为“STDOUT”的appender处理，“STDOUT”appender将信息打印到控制台；
