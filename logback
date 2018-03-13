@@ -1,7 +1,7 @@
 1、代码中定义 logger
 2、logger中定义日志级别，以及关联的appender
 3、appender主要作用就是：①控制打印日志的地方、②打印日志的输出格式。
-4、根logger：只有一个level属性，应为已经被命名为"root".
+4、根logger：只有一个level属性，因为已经被命名为"root".
 5、spring、mybatis等，如果不显示的定义logger，则自动向上递归匹配至根logger.
 
 
