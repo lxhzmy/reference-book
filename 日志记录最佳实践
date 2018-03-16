@@ -1,0 +1,56 @@
+日志的作用
+
+主要作用包括：
+1、出问题后定位当时问题
+2、显示程序当前运行状态
+
+
+日志记录的一些最佳实践
+
+以下可以根据项目实际情况当做规范使用：
+
+1、tomcat配置access日志，记录每次http请求相关信息
+
+2、dubbo配置access日志，记录dubbo consumer和provider的每次请求调用和处理
+
+3、在系统里调用外部的地方，记录请求的接口、参数、返回结果、花费时间、遇到的异常等
+
+4、在系统里出现异常的地方，记录异常的堆栈，如果可以，尽量通过异常的日志能还原当时的情景，比如当时受影响的是哪个用户、传入的变量是什么、处理哪些核心数据引发的异常等等
+
+5、有些代码在编写时就知道很难被执行到或者不希望被执行到、以及一些基本不会走到的else块，这些地方需要记录下核心日志
+
+6、禁止使用 System.out 或 System.error
+
+7、禁止使用 Apache Commons Logging , Java Util Logging，推荐使用slf4j，推荐使用Logback，代码中使用Slf4j记录日志
+
+8、业务日志使用独立的日志配置，不能采用className。举个例子，我之前在qunar做项目时，涉及打通许多第三方管理系统，和每一个第三方的交互的日志都会单独存储到一个日志文件中
+
+9、INFO及以上的系统日志统一输出到Console。在生产环境中如果将系统log切分成多个文件, 是非常不利于问题排查的. 不仅要同时追找多个文件, 还要匹配问题发生的时间点. 最要命的是, 有些异常是被print到 console里的。
+
+10、日志配置Rolling，可以根据实际情况配置按天、按小时进行轮转，生成新的日志文件
+
+11、记录程序状态需要包含发生时间（一般框架里就会带上）、大数据量更新的进度、关键变量及正在做哪些重要事情。
+
+12、不同的日志文件尽量使用同样的格式输出（logback配置同样的pattern）, 这样方便脚本通用及第三方解析
+
+使用半结构化的日志消息
+
+在 介绍日志记录 API 中的格式化器时提到过，日志记录中除了基本的日志消息之外，还包括由日志框架提供的其他元数据。这些数据按照给定的格式出现在日志记录中。
+这些半结构化的 格式使得可以通过工具提取日志记录中的相关信息进行分析。在使用日志 API 进行记录时，对于日志消息本身，也推荐使用半结构化的方式来组织。
+在 介绍日志记录 API 中的格式化器时提到过，日志记录中除了基本的日志消息之外，还包括由日志框架提供的其他元数据。这些数据按照给定的格式出现在日志记录中。
+这些半结构化的 格式使得可以通过工具提取日志记录中的相关信息进行分析。在使用日志 API 进行记录时，对于日志消息本身，也推荐使用半结构化的方式来组织。
+
+如何记录Exception
+上面讲的参数化Log方法的中的最后一个参数如果是一个Exception类型的对象的时候，logback将会打印该Exception的StackTrace信息。看下面的这个例子：
+logger.info("读取配置文件[{}]时出错。","/somePath/config.properties",new FileNotFoundException("File not exists"))
+执行结果为：
+2014-08-12 00:29:24,018 [main] INFO  c.j.training.logging.service.UserService - 读取配置文件[/somePath/config.properties]时出错。异常为[java.io.FileNotFoundException: File not exists]
+
+ 例子如下：
+logger.info("读取参数[{}]的时候出错：[{}], 请检查你的配置文件[{}]","maxSize",new FileNotFoundException("File not exists"),"/somePath/config.properties");
+ 执行结果为：
+2014-08-12 00:35:11,125 [main] INFO  c.j.training.logging.service.UserService - 读取参数[maxSize]的时候出错：[java.io.FileNotFoundException: File not exists], 请检查你的配置文件[/somePath/config.properties]
+
+
+
+
