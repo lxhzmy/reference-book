@@ -9,7 +9,7 @@ SonarQube 并不是简单地将各种质量检测工具的结果（例如 FindBu
 ```
 
 - SonarQube平台包含了四个组件：分析器，服务端，安装在服务端的插件以及数据库。
-
+![alt](https://github.com/lxhzmy/reference-book/blob/master/picture/sonar1.jpg "sonar")
 
 - 分析器负责一行一行地执行代码分析。它能够提供技术债务，代码覆盖率，代码复杂度，检测出的问题等信息。检查出来的问题可以是bug，潜在的bug，或者是可能在将来导致错误的问题等。当分析完成后，结果可以通过由SonarQube服务端提供的网页进行浏览。SonarQube的web服务器简化了SonarQube实例的配置，插件的安装等过程，并提供一个直观的结果概览图。 
 
@@ -21,3 +21,5 @@ SonarQube 并不是简单地将各种质量检测工具的结果（例如 FindBu
 
 ###### 6、结束
 SonarQube 的使用使代码质量控制变地更加容易，并且能够减少真实的和潜在的bug的数量。开发者们能够更加专注于逻辑本身，花费更多时间进行业务分析，并为具体的案例寻找最有效的解决方案。使用了SonarQube 进行代码检查之后，管理者们开始跟踪代码分析的结果，因为他们相信这些结果能够较好地反应项目的开发状况。
+
+[sonar_jiegou]:https://github.com/lxhzmy/reference-book/blob/master/picture/sonar1.jpg
