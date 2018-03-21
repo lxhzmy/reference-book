@@ -26,8 +26,11 @@ SonarQube的web服务器简化了SonarQube实例的配置，插件的安装等�
 ###### 3.1 Analyzing with SonarQube Scanner
 ```
 1. 下载sonar-scanner解压，将bin文件加入环境变量path中，如我的路径E:\sonar\sonar-scanner\bin将此路径加入path中。
+
 2. 修改sonar scanner配置文件， conf/sonar-scanner.properties。配置需要访问的sonar服务和mysql服务器地址、用户密码。
+
 3. 查看服务是否Ok sonar-scanner -h 
+
 4. 将sonar-project.properties 放入需要扫描的project中
 # must be unique in a given SonarQube instance
 sonar.projectKey=HCMessage-server
@@ -43,7 +46,6 @@ sonar.sourceEncoding=UTF-8
 
 5. 启动分析 sonar-scanner -X
 ```
-
 ###### 3.2 Analyzing with SonarQube Scanner for Gradle 
 ###### 3.3 Analyzing with SonarQube Scanner for Jenkins 
 
