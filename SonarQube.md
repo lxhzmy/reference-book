@@ -4,7 +4,7 @@
 
 ##### 2、SonarQube概述  
 ```
-- SonarQube 不是简单地将各种质量检测工具的结果（例如 FindBugs，PMD 等）直接展现给客户，而是通过不同的插件算法
+SonarQube 不是简单地将各种质量检测工具的结果（例如 FindBugs，PMD 等）直接展现给客户，而是通过不同的插件算法
 来对这些结果进行再加工, 最终以量化的方式来衡量代码质量，从而方便地对不同规模和种类的工程进行相应的代码质量管理。
 ```
 - SonarQube 可以从七个维度检测代码质量:
@@ -23,6 +23,28 @@
 SonarQube的web服务器简化了SonarQube实例的配置，插件的安装等过程，并提供一个直观的结果概览图。 
 
 ##### 3、代码分析
+###### Analyzing with SonarQube Scanner 
+1. 下载sonar-scanner解压，将bin文件加入环境变量path中，如我的路径E:\sonar\sonar-scanner\bin将此路径加入path中。
+2. 修改sonar scanner配置文件， conf/sonar-scanner.properties。配置需要访问的sonar服务和mysql服务器地址、用户密码。
+3. 查看服务是否Ok sonar-scanner -h 
+4. 将sonar-project.properties 放入需要扫描的project中
+```
+# must be unique in a given SonarQube instance
+sonar.projectKey=HCMessage-server
+# this is the name and version displayed in the SonarQube UI. Was mandatory prior to SonarQube 6.1.
+sonar.projectName=HCMessage-server
+sonar.projectVersion=1.0
+sonar.java.binaries=build/classes/java/main
+# Path is relative to the sonar-project.properties file. Replace "\" by "/" on Windows.
+# This property is optional if sonar.modules is set.
+sonar.sources=.
+# Encoding of the source code. Default is default system encoding
+sonar.sourceEncoding=UTF-8
+```
+5. 启动分析 sonar-scanner -X
+
+###### Analyzing with SonarQube Scanner for Gradle 
+###### Analyzing with SonarQube Scanner for Jenkins 
 
 ##### 4、结果展示
 
