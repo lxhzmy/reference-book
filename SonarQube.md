@@ -17,14 +17,13 @@
 (6) 潜在的Bug(potential bugs): 通过Findbugs,PMD,CheckStyle等检测潜在的bug
 (7) 结构与设计(architecture & design): 找出循环，展示包与包、类与类之间的依赖、检查程序之间耦合度
 
-
+```
 - SonarQube平台包含了四个组件：分析器，服务端，安装在服务端的插件以及数据库。
 ![alt](https://github.com/lxhzmy/reference-book/blob/master/picture/sonar1.jpg "sonar")
 
 - 分析器负责一行一行地执行代码分析。它能够提供技术债务，代码覆盖率，代码复杂度，检测出的问题等信息。检查出来的问题可以是bug，
 潜在的bug，或者是可能在将来导致错误的问题等。当分析完成后，结果可以通过由SonarQube服务端提供的网页进行浏览。
 SonarQube的web服务器简化了SonarQube实例的配置，插件的安装等过程，并提供一个直观的结果概览图。 
-```
 
 ##### 3、代码分析
 
