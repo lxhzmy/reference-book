@@ -47,9 +47,35 @@ sonar.sourceEncoding=UTF-8
 5. 启动分析 sonar-scanner -X
 ```
 ###### 3.2 Analyzing with SonarQube Scanner for Gradle 
+```
+1. 引入插件build.gradle
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+    dependencies {
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2"
+    }
+}
+
+apply plugin: "org.sonarqube"
+
+2. 添加sonarqube配置参数
+sonarqube {
+    properties {
+        property "sonar.host.url", "http://10.164.206.60:9000/sonar"
+        property "sonar.projectKey", "Outreach"
+    }
+}
+
+2. 启动分析 gradle sonarqube
+
+```
 ###### 3.3 Analyzing with SonarQube Scanner for Jenkins 
+TBD
 
 ##### 4、结果展示
+
 
 ##### 5、SonarQube和持续集成
 
