@@ -75,11 +75,11 @@ sonarqube {
 TBD
 
 ##### 4、结果展示
-
+SonarQube 进行代码分析之后，会将分析结果发送至SonarQube服务端，可以通过浏览器查看分析结果。
 
 ##### 5、SonarQube和持续集成
 
-###### 6、结束
+##### 6、结束
 SonarQube 的使用使代码质量控制变地更加容易，并且能够减少真实的和潜在的bug的数量。开发者们能够更加专注于逻辑本身，花费更多时间进行业务分析，并为具体的案例寻找最有效的解决方案。使用了SonarQube 进行代码检查之后，管理者们开始跟踪代码分析的结果，因为他们相信这些结果能够较好地反应项目的开发状况。
 
 [sonar_jiegou]:https://github.com/lxhzmy/reference-book/blob/master/picture/sonar1.jpg
